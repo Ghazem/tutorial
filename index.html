@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" >
   <head>
     <meta charset="utf-8">
     <title>tutorial</title>
   </head>
-  <body ng-app="">
-   <div ng-cloak>
-     {{1+3}}
-   </div>
+  <body ng-app=""ng-init="customers=[{joined:'2008-4-14',name:'khaled',city:'minia',ordertotal:500},{joined:'2018-3-1',name:'zaky',city:'alex',ordertotal:434.23},{joined:'2011-8-23',name:'tarek',city:'tanta',ordertotal:458.14},{joined:'2010-2-26',name:'samy',city:'luxor',ordertotal:563}]">
+    <h2>Customers</h2>
+    filter :<input ng-model="tttt"> <span>{{tttt}}</span>
+    <br/><br/>
+    <table>
+     <thead>
+       <th>Name</th>
+       <th>City</th>
+       <th>Order ordertotal</th>
+       <th>joined</th>
+     </thead>
+     <tbody>
+       <tr ng-repeat="cust in customers">
+         <td>{{cust.name}}</td>
+         <td>{{cust.city}}</td>
+         <td>{{cust.ordertotal |currency}}</td>
+         <td>{{cust.joined }}</td>
+       </tr>
+     </tbody>
+    </table>
 
-    <script src="js/angular.js"></script>
+  <script src="js/angular.js"></script>
   </body>
 </html>
