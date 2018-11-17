@@ -4,19 +4,20 @@
     <meta charset="utf-8">
     <title>tutorial</title>
   </head>
-  <body ng-app=""ng-init="customers=[{joined:'2008-4-14',name:'khaled',city:'minia',ordertotal:500},{joined:'2018-3-1',name:'zaky',city:'alex',ordertotal:434.23},{joined:'2011-8-23',name:'tarek',city:'tanta',ordertotal:458.14},{joined:'2010-2-26',name:'samy',city:'luxor',ordertotal:563}]">
+
+  <body ng-app="mod" ng-controller="cont1">
     <h2>Customers</h2>
     filter :<input ng-model="tttt"> <span>{{tttt}}</span>
     <br/><br/>
     <table>
      <thead>
-       <th>Name</th>
-       <th>City</th>
-       <th>Order ordertotal</th>
-       <th>joined</th>
+       <th ng-click="dosort('name')">Name</th>
+       <th ng-click="dosort('city')">City</th>
+       <th ng-click="dosort('ordertotal')">Order ordertotal</th>
+       <th ng-click="dosort('joined')">joined</th>
      </thead>
      <tbody>
-       <tr ng-repeat="cust in customers">
+       <tr ng-repeat="cust in customers | filter:tttt | orderBy:sortme:reverse">
          <td>{{cust.name}}</td>
          <td>{{cust.city}}</td>
          <td>{{cust.ordertotal |currency}}</td>
@@ -24,7 +25,12 @@
        </tr>
      </tbody>
     </table>
+    <br/>
+     Total Customers = <span>{{customers.length}}</span>
+    <script src="js/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="app/controller/customercontroller.js"></script>
 
-  <script src="js/angular.js"></script>
+
   </body>
 </html>
